@@ -14,7 +14,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("cyash857/hello-world:${TAG}")
+                    docker.build("default-docker-local/hello-world:${TAG}")
                 }
             }
         }
