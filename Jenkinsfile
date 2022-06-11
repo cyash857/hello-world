@@ -9,6 +9,7 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'mvn clean package'
+		sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
             }
         }
         stage ('OWASP Dependency-Check Vulnerabilities') {
