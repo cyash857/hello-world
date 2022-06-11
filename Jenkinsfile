@@ -16,7 +16,7 @@ pipeline {
 	         sh 'mvn surefire:test'
 	     }	     
         }
-	 stage ('Dependency Check') {
+	 stage ('OWASP Dependency Check') {
 	     steps {
 		 sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
              }
