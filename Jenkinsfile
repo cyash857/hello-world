@@ -12,11 +12,14 @@ pipeline {
             }
         }
          stage ('Test') {
-             mvn 'surefire:test'
+	     steps {
+	         sh 'mvn surefire:test'
+	     }	     
         }
 	 stage ('Dependency Check') {
-             mvn 'org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
-             step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
+	     steps {
+		 sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
+             }
         }
         stage('Docker Build') {
             steps {
