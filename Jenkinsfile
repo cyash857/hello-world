@@ -9,15 +9,14 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'mvn clean package'
-		sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
             }
         }
-         stage('Test') {
-              mvn 'surefire:test'
+         stage ('Test') {
+             mvn 'surefire:test'
         }
-	 stage('Dependency Check') {
-              mvn 'org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
-              step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
+	 stage ('Dependency Check') {
+             mvn 'org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
+             step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
         }
         stage('Docker Build') {
             steps {
