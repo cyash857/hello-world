@@ -12,17 +12,13 @@ pipeline {
 		sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
             }
         }
-        stage ('OWASP Dependency-Check Vulnerabilities') {
-            steps {
-                dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'OWASP-DC'
-
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-        } 
+         stage('Test') {
+              mvn 'surefire:test'
+        }
+	 stage('Dependency Check') {
+              mvn 'org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
+              step([$class: 'DependencyCheckPublisher', unstableTotalAll: '0'])
+        }
         stage('Docker Build') {
             steps {
                 script {
