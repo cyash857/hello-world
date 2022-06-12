@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'sudo chmod 666 /var/run/docker.sock'
+                sh 'chmod 666 /var/run/docker.sock'
                 script {
                     docker.build("default-docker-local/hello-world:${TAG}")
                 }
