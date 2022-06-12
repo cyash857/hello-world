@@ -41,7 +41,6 @@ pipeline {
         stage('Deploy'){
             steps {
                 sh "docker stop hello-world | true"
-                sh "docker rm hello-world | true"
                 sh "docker run --name hello-world -d -p 9004:80 cyash857.jfrog.io/default-docker-local/hello-world:${TAG}"
             }
         }
