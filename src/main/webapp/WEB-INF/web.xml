@@ -3,9 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-<welcome-file-list>
-    <welcome-file>index</welcome-file>
-</welcome-file-list>
+
   <display-name>Webapp</display-name>
   <servlet>
   <servlet-name>HelloWorldExample</servlet-name>
@@ -13,6 +11,6 @@
   </servlet>
   <servlet-mapping>
   <servlet-name>HelloWorldExample</servlet-name>
-  <url-pattern>hello</url-pattern>
+  <url-pattern>/*</url-pattern>
   </servlet-mapping>
 </web-app>
