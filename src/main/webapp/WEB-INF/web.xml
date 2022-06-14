@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-
   <display-name>Webapp</display-name>
   <servlet>
   <servlet-name>HelloWorldExample</servlet-name>
@@ -11,6 +10,6 @@
   </servlet>
   <servlet-mapping>
   <servlet-name>HelloWorldExample</servlet-name>
-  <url-pattern>/*</url-pattern>
+  <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 </web-app>
