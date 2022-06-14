@@ -24,7 +24,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("default-docker-local/hello-world:${TAG}")
+                    docker.build("default-docker-local/myapp:${TAG}")
                 }
             }
         }
@@ -32,17 +32,17 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://cyash857.jfrog.io/', 'artifactory-credential') {
-                        docker.image("default-docker-local/hello-world:${TAG}").push()
-                        docker.image("default-docker-local/hello-world:${TAG}").push("latest")
+                        docker.image("default-docker-local/myapp:${TAG}").push()
+                        docker.image("default-docker-local/myapp:${TAG}").push("latest")
                     }
                 }
             }
         }
         stage('Deploy'){
             steps {
-                sh "docker stop hello-world | true"
-                sh "docker rm hello-world | true"
-                sh "docker run --name hello-world -d -p 80:8080 cyash857.jfrog.io/default-docker-local/hello-world:${TAG}"
+                sh "docker stop myapp | true"
+                sh "docker rm myapp | true"
+                sh "docker run --name hello-world -d -p 80:8080 cyash857.jfrog.io/default-docker-local/myapp:${TAG}"
             }
         }
     }
