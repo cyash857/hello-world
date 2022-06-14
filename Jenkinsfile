@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh "docker stop myapp | true"
                 sh "docker rm myapp | true"
-                sh "docker run --name hello-world -d -p 80:8080 cyash857.jfrog.io/default-docker-local/myapp:${TAG}"
+                sh "docker run --name myapp -d -p 80:8080 cyash857.jfrog.io/default-docker-local/myapp:${TAG}"
             }
         }
     }
