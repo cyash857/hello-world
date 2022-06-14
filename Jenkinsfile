@@ -19,6 +19,7 @@ pipeline {
 	 stage ('OWASP Dependency Check') {
 	     steps {
 		 sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
+		 sh 'aws s3 cp target/dependency-check-report.html s3://pocbucketreport/owaspReport/'    
              }
         }
         stage('Docker Build') {
