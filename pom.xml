@@ -58,6 +58,14 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+           
+    <dependency>
+      <groupId>org.owasp</groupId>
+      <artifactId>dependency-check-maven</artifactId>
+      <version>5.2.4</version>
+      <type>maven-plugin</type>
+    </dependency>
+           
   </dependencies>
 
 </project>
