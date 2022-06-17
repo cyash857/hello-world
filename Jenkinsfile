@@ -19,7 +19,7 @@ pipeline {
 	 stage('SonarQube analysis') {
              steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=cyash857 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_8c4a19dbc293ff347672ae0032decdbfb9005e31'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=cyash857 -Dsonar.host.url=http://localhost:9000'
                 }
              }
         }
