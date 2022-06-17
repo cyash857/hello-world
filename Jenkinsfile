@@ -23,11 +23,6 @@ pipeline {
                 }
              }
         }
-        stage("Quality gate") {
-             steps {
-                waitForQualityGate abortPipeline: true
-             }
-        }
 	 stage ('OWASP Dependency Check') {
 	     steps {
 		 sh 'mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML'
